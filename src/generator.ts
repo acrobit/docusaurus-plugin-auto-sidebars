@@ -1,22 +1,22 @@
-const parseMarkdownMetadata = require('./libs/markdownMetadataParser')
-const {arrayToObject} = require('./libs/objectUtils')
-const {loadFolderMetadata} = require('./libs/folderMetadataLoader')
-const {fileContent} = require('./libs/ioUtils')
-const {readdirSync} = require('fs');
-const path = require('path');
+import {parseMarkdownMetadata} from "./libs/markdownMetadataParser.js";
+import {arrayToObject} from './libs/objectUtils';
+import {loadFolderMetadata} from './libs/folderMetadataLoader';
+import {fileContent} from './libs/ioUtils';
+import {readdirSync, Dirent} from 'fs';
+import path from 'path';
 
 // Load folder metadata from `sidebars.yaml`
 const folders = loadFolderMetadata();
 const foldersDic = arrayToObject(folders, 'path');
-function generateSidebar(docsPath, root = ``) {
+export function generateSidebar(docsPath:string, root = ``) {
 
-    let items = [];
+    let items:any[] = [];
 
     var entries=readdirSync(path.join(docsPath,root), {
         withFileTypes: true
     });
 
-    sortFiles(entries).forEach(function (dirent) {
+    sortFiles(entries).forEach(function (dirent:Dirent) {
         let sidebarItem;
         const relDocPath = (root.length ? root + '/' : '');
 
@@ -51,7 +51,7 @@ function generateSidebar(docsPath, root = ``) {
 }
 
 
-function getFileOrder(dirent){
+function getFileOrder(dirent:any){
     var {name} = dirent;
     if(dirent.isDirectory() && foldersDic[name])
     { 
@@ -64,7 +64,7 @@ function getFileOrder(dirent){
     return parseInt(order)|| name;
 }
 
-function sortFiles(files)
+function sortFiles(files:Dirent[])
 {
     return files.sort(function(a, b) {
         var oa = getFileOrder(a)
@@ -80,6 +80,3 @@ function sortFiles(files)
     });
 }
 
-module.exports = {
-    generateSidebar,
-};

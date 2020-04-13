@@ -1,12 +1,12 @@
 const  yaml = require('js-yaml') 
 
-function getYamlContentFromMarkdown(markdownContent)
+function getYamlContentFromMarkdown(markdownContent:string)
 {
     var yamlContent=''
     var iFrom = markdownContent.indexOf('---');
     if(iFrom>=0){
         iFrom+=3;
-        iTo = markdownContent.indexOf('---', iFrom);
+        var iTo = markdownContent.indexOf('---', iFrom);
         if(iTo<0) return "";
         yamlContent = markdownContent.substring(iFrom, iTo);
     }
@@ -14,7 +14,7 @@ function getYamlContentFromMarkdown(markdownContent)
     return yamlContent;
 }
 
-function parseMarkdownMetadata(markdownContent)
+export function parseMarkdownMetadata(markdownContent:string|null)
 {
     if(markdownContent===null)
         return;
@@ -23,6 +23,4 @@ function parseMarkdownMetadata(markdownContent)
     return yaml.safeLoad(yamelPart)
 
 }
-
-module.exports=parseMarkdownMetadata;
 

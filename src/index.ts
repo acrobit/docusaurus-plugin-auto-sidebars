@@ -4,7 +4,7 @@ import path from 'path';
 import {LoadContext, Plugin} from '@docusaurus/types';
 import {PluginOptions} from './types';
 
-const {generateSidebar} = require('./generator');
+import {generateSidebar} from './generator';
 
 const _moduleFileTemplate=`
 module.exports = {

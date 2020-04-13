@@ -35,5 +35,5 @@
     "rootDir": "src",
     "outDir": "lib"
   },
-  "exclude": ["node_modules", "**/__tests__/**/*", "**/lib/**/*"]
+  "exclude": ["example", "node_modules", "**/__tests__/**/*", "**/lib/**/*"]
 }

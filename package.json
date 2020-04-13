@@ -11,11 +11,15 @@
   },
   "license": "MIT",
   "dependencies": {
+    "js-yaml": "^3.13.1",
     "@docusaurus/types": "^2.0.0-alpha.50"
   },
-  "peerDependencies": {
-  },
+  "peerDependencies": {},
   "engines": {
     "node": ">=10.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.11.1",
+    "typescript": "^3.8.3"
   }
 }

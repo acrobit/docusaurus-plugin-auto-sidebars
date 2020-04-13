@@ -1,6 +1,7 @@
-const path = require('path');
-const yaml = require('js-yaml')
-const {fileContent} = require('./ioUtils')
+// import path from 'path';
+// import * as yaml from 'js-yaml';
+const  yaml = require("js-yaml");
+import {fileContent} from './ioUtils';
 
 /**
  * Converts yamlObject to array of normalized folderInfo object
@@ -10,14 +11,14 @@ const {fileContent} = require('./ioUtils')
  * }
  * @param {yamlObject} yamelFolders 
  */
-function toFlattenFolders(yamelFolders, parentFolder = "") {
-    let result = [];
+function toFlattenFolders(yamelFolders:any[], parentFolder = "") {
+    let result:any[] = [];
 
     yamelFolders.forEach((folderEntry, order) => {
         var key = Object.keys(folderEntry)[0];
         var value = folderEntry[key];
 
-        let title = typeof folder === "string" ? value : value[0];
+        let title = typeof value === "string" ? value : value[0];
         if (typeof title === "object") {
             var titleKey = Object.keys(title)[0];
             order = title[titleKey] || order
@@ -41,7 +42,7 @@ function toFlattenFolders(yamelFolders, parentFolder = "") {
 }
 
 
-function loadFolderMetadata()
+export function loadFolderMetadata()
 {
     var yamlContent = fileContent('sidebars.yaml');
     if(!yamlContent)
@@ -50,9 +51,5 @@ function loadFolderMetadata()
         return toFlattenFolders(yaml.safeLoad(yamlContent)||[]);
 }
 
-
-module.exports = {
-    loadFolderMetadata
-};
 
 
