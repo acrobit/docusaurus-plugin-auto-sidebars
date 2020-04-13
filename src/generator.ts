@@ -35,10 +35,11 @@ export function generateSidebar(docsPath:string, root = ``) {
             if (dirent.name.indexOf('.md') < 0) return;
 
             const filename = relDocPath + dirent.name;
-            const content = fileContent(filename);
+            const filePath = path.join(docsPath, dirent.name);
+            const content = fileContent(filePath);
             const metadata = parseMarkdownMetadata(content);
             
-            if(metadata.slider === false) return;
+            if(metadata.sidebar === false) return;
 
             sidebarItem = metadata.id ? relDocPath + metadata.id : 
                 filename.split('.').slice(0, -1).join('.');

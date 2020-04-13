@@ -25,7 +25,7 @@ function generateSidebarFile(siteDir:string, docsRelPath: string )
 }
 
 const DEFAULT_OPTIONS: PluginOptions = {
-  path: 'src/docs', // Path to docs on filesystem, relative to site dir.
+  path: 'docs', // Path to docs on filesystem, relative to site dir.
 };
 
 export default function pluginContentPages(
