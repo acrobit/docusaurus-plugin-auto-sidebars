@@ -1,7 +1,7 @@
-import {parseMarkdownMetadata} from "./libs/markdownMetadataParser.js";
-import {arrayToObject} from './libs/objectUtils';
-import {loadFolderMetadata} from './libs/folderMetadataLoader';
-import {fileContent} from './libs/ioUtils';
+import {parseMarkdownMetadata} from "./utils/markdownMetadataParser.js";
+import {arrayToObject} from './utils/objectUtils';
+import {loadFolderMetadata} from './utils/folderMetadataLoader';
+import {fileContent} from './utils/ioUtils';
 import {readdirSync, Dirent} from 'fs';
 import path from 'path';
 
