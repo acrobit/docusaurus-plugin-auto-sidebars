@@ -1,0 +1,9 @@
+- folder1: 
+  - Parent Folder One # First element is the title of parent, next elements are sub directories
+  - subfolder1: Sub Folder One
+  - subfolder2: Sub Folder Two
+  
+- folder2: 
+  - Parent Folder Two # First element is the title
+  - subfolder1: Sub Folder One
+  - subfolder2: Sub Folder Two
