@@ -1,14 +1,24 @@
 import {parseMarkdownMetadata} from "./utils/markdownMetadataParser.js";
 import {arrayToObject} from './utils/objectUtils';
-import {loadFolderMetadata} from './utils/folderMetadataLoader';
+import {loadMetadata} from './utils/sidebarsMetadataLoader';
 import {fileContent} from './utils/ioUtils';
 import {readdirSync, Dirent} from 'fs';
 import path from 'path';
 
 // Load folder metadata from `sidebars.yaml`
-const folders = loadFolderMetadata();
-const foldersDic = arrayToObject(folders, 'path');
+let folders:any[] = [];
+let foldersDic:any = null ;
+
+function loadSidebarsMetadata(docsPath:string){
+    folders = loadMetadata(docsPath);
+    foldersDic = arrayToObject(folders, 'path');
+}
 export function generateSidebar(docsPath:string, root = ``) {
+
+    if (foldersDic === null){
+        loadSidebarsMetadata(docsPath);
+        console.log(folders);
+    }
 
     let items:any[] = [];
 
@@ -22,7 +32,7 @@ export function generateSidebar(docsPath:string, root = ``) {
 
         if (dirent.isDirectory()) { 
             // sidebarItem is category
-            var folder = foldersDic[dirent.name]
+            var folder = foldersDic[relDocPath+dirent.name]
             sidebarItem = {
                 type: 'category',
                 label: folder?folder.title:dirent.name,
@@ -35,7 +45,7 @@ export function generateSidebar(docsPath:string, root = ``) {
             if (dirent.name.indexOf('.md') < 0) return;
 
             const filename = relDocPath + dirent.name;
-            const filePath = path.join(docsPath, dirent.name);
+            const filePath = path.join(docsPath, relDocPath, dirent.name);
             const content = fileContent(filePath);
             const metadata = parseMarkdownMetadata(content);
             

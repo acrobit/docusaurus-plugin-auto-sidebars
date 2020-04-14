@@ -1,6 +1,8 @@
 // import path from 'path';
 // import * as yaml from 'js-yaml';
 const  yaml = require("js-yaml");
+import path from 'path';
+
 import {fileContent} from './ioUtils';
 
 /**
@@ -42,13 +44,14 @@ function toFlattenFolders(yamelFolders:any[], parentFolder = "") {
 }
 
 
-export function loadFolderMetadata()
+export function loadMetadata(docsPath:string)
 {
-    var yamlContent = fileContent('sidebars.yaml');
+    const sidebarsYamlPath = path.join(docsPath, "sidebars.yaml");
+    var yamlContent = fileContent(sidebarsYamlPath);
     if(!yamlContent)
         return [];
     
-        return toFlattenFolders(yaml.safeLoad(yamlContent)||[]);
+    return toFlattenFolders(yaml.safeLoad(yamlContent)||[]);
 }
 
 
