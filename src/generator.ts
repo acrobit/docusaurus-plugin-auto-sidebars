@@ -9,16 +9,7 @@ import path from 'path';
 let folders:any[] = [];
 let foldersDic:any = null ;
 
-function loadSidebarsMetadata(docsPath:string){
-    folders = loadMetadata(docsPath);
-    foldersDic = arrayToObject(folders, 'path');
-}
-export function generateSidebar(docsPath:string, root = ``) {
-
-    if (foldersDic === null){
-        loadSidebarsMetadata(docsPath);
-        console.log(folders);
-    }
+function generateSidebar(docsPath:string, root = ``) {
 
     let items:any[] = [];
 
@@ -61,6 +52,12 @@ export function generateSidebar(docsPath:string, root = ``) {
     return items; //names.sort().reverse();
 }
 
+export function generate(docsPath:string) {
+    folders = loadMetadata(docsPath);
+    foldersDic = arrayToObject(folders, 'path');
+
+    return generateSidebar(docsPath);
+}
 
 function getFileOrder(dirent:any){
     var {name} = dirent;
