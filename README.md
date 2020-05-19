@@ -63,6 +63,8 @@ Just add a `sidebars.yaml` in your `docs` folder:
 2.fileY.md
 3.fileX.md
 ```  
+Note : You can also use **negative numbers** to display them in reverse order : `-1. fileX.md`
+
 **Method 2**: Define them in the `sidebars.yaml` file
 
 ```yaml
