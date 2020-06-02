@@ -49,6 +49,7 @@ Just add a `sidebars.yaml` in your `docs` folder:
   - Parent Folder One # First element is the title of parent, next elements are sub directories
   - subfolder1: Sub Folder One
   - subfolder2: Sub Folder Two
+  - subfolder3: false # Hide it!
   
 - folder2: 
   - Parent Folder Two # First element is the title
@@ -63,6 +64,8 @@ Just add a `sidebars.yaml` in your `docs` folder:
 2.fileY.md
 3.fileX.md
 ```  
+Note : You can also use **negative numbers** to display them in reverse order : `-1. fileX.md`
+
 **Method 2**: Define them in the `sidebars.yaml` file
 
 ```yaml

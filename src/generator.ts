@@ -23,12 +23,17 @@ function generateSidebar(docsPath:string, root = ``) {
 
         if (dirent.isDirectory()) { 
             // sidebarItem is category
-            var folder = foldersDic[relDocPath+dirent.name]
+            var folder = foldersDic[relDocPath+dirent.name];
+
+            if (folder.title === '') return;
+
             sidebarItem = {
                 type: 'category',
                 label: folder?folder.title:dirent.name,
                 items: generateSidebar(docsPath, relDocPath + dirent.name)
             };
+
+
 
         } else { 
             // sidebarItem is md file

@@ -19,6 +19,8 @@ function toFlattenFolders(yamelFolders:any[], parentFolder = "") {
     yamelFolders.forEach((folderEntry, order) => {
         var key = Object.keys(folderEntry)[0];
         var value = folderEntry[key];
+        
+        if(value === false) value="";
 
         let title = typeof value === "string" ? value : value[0];
         if (typeof title === "object") {
