@@ -20,7 +20,7 @@ function toFlattenFolders(yamelFolders:any[], parentFolder = "") {
         var key = Object.keys(folderEntry)[0];
         var value = folderEntry[key];
         
-        if(value === false) value="";
+        if(value === false) value=""; // Empty title is a sign of hidden folders
 
         let title = typeof value === "string" ? value : value[0];
         if (typeof title === "object") {

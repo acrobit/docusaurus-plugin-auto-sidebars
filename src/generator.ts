@@ -25,7 +25,7 @@ function generateSidebar(docsPath:string, root = ``) {
             // sidebarItem is category
             var folder = foldersDic[relDocPath+dirent.name];
 
-            if (folder.title === '') return;
+            if (folder && folder.title === '') return;
 
             sidebarItem = {
                 type: 'category',
