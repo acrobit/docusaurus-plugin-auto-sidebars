@@ -1,4 +1,4 @@
 export interface PluginOptions {
-    path:string
+  path: string;
+  sidebarPath: string;
 }
-
