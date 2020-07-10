@@ -1,6 +1,6 @@
 {
   "name": "docusaurus-plugin-auto-sidebars",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Auto sidebars plugin for Docusaurus",
   "main": "lib/index.js",
   "scripts": {
